@@ -93,7 +93,7 @@ resource "aws_dynamodb_table" "terraform-lock" {
 
 
 module "global_state_bucket" {
-  acount         = "${var.account}"
+  account        = "${var.account}"
   source         = "../../../modules/aws/state_bucket"
   project        = "${var.project}"
   stack          = "global"
@@ -101,7 +101,7 @@ module "global_state_bucket" {
 }
 
 module "mgmt_state_bucket" {
-  acount         = "${var.account}"
+  account        = "${var.account}"
   source         = "../../../modules/aws/state_bucket"
   project        = "${var.project}"
   stack          = "mgmt"
@@ -109,7 +109,7 @@ module "mgmt_state_bucket" {
 }
 
 module "service_state_bucket" {
-  acount         = "${var.account}"
+  account        = "${var.account}"
   source         = "../../../modules/aws/state_bucket"
   project        = "${var.project}"
   stack          = "service"
@@ -117,7 +117,7 @@ module "service_state_bucket" {
 }
 
 module "vpcpeering_state_bucket" {
-  acount         = "${var.account}"
+  account        = "${var.account}"
   source         = "../../../modules/aws/state_bucket"
   project        = "${var.project}"
   stack          = "vpcpeering"
