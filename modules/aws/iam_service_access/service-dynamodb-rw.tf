@@ -24,6 +24,7 @@ resource "aws_iam_policy" "service-dynamodb-rw" {
         {
             "Effect": "Allow",
             "Action": [
+                "dynamodb:BatchWriteItem",
                 "dynamodb:DeleteItem",
                 "dynamodb:GetItem",
                 "dynamodb:PutItem",
