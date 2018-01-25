@@ -5,7 +5,6 @@
 variable "account"           { }
 variable "domain"            { }
 variable "project"           { }
-variable "stack"             { }
 variable "prod_account_id"   { }
 variable "nonprod_account_id"   { }
 
@@ -122,6 +121,15 @@ module "vpcpeering_state_bucket" {
   project        = "${var.project}"
   stack          = "vpcpeering"
   prod_acount_id = "${var.prod_account_id}"
+}
+
+module "kops_state_bucket" {
+  account        = "${var.account}"
+  source         = "../../../modules/aws/state_bucket"
+  project        = "${var.project}"
+  tool           = "${var.account}"
+  stack          = "kops"
+  prod_acount_id = "0"
 }
 
 output "prod_account_id" { value = "${var.prod_account_id}" }
