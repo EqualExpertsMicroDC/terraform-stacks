@@ -4,7 +4,7 @@
 #
 
 variable "account"        { }
-variable "tool"           { }
+variable "tool"           { default = "terraform" }
 variable "project"        { }
 variable "stack"          { }
 variable "prod_acount_id" { }
