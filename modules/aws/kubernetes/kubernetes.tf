@@ -1,5 +1,5 @@
 
-# https://github.com/EqualExpertsMicroDC/terraform-stacks/blob/master/LICENSE
+# https://github.com/microdc/terraform-stacks/blob/master/LICENSE
 #
 variable "environment" { }
 variable "public_zone_id" { }
