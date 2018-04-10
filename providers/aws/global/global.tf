@@ -151,7 +151,7 @@ resource "aws_s3_bucket" "kops_state_bucket" {
   }
 
   tags {
-    Name    = "${var.project}-${var.account}-${var.tool}-${var.stack}"
+    Name    = "${var.project}-${var.account}-kops-state"
     Project = "${var.project}"
   }
 }
