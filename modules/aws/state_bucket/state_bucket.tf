@@ -7,7 +7,7 @@ variable "account"        { }
 variable "tool"           { default = "terraform" }
 variable "project"        { }
 variable "stack"          { }
-variable "prod_acount_id" { }
+variable "prod_account_id" { }
 
 resource "aws_s3_bucket" "state_bucket" {
   bucket = "${var.project}-${var.tool}-${var.stack}"
@@ -21,7 +21,7 @@ resource "aws_s3_bucket" "state_bucket" {
       "Sid":"Allow Prod Access to ${var.project}-${var.tool}-${var.stack}",
       "Effect":"Allow",
       "Principal": {
-          "AWS": "arn:aws:iam::${var.prod_acount_id}:root"
+          "AWS": "arn:aws:iam::${var.prod_account_id}:root"
       },
       "Action": "s3:ListBucket",
       "Resource": "arn:aws:s3:::${var.project}-${var.tool}-${var.stack}"
@@ -30,7 +30,7 @@ resource "aws_s3_bucket" "state_bucket" {
       "Sid":"Allow Prod Access to ${var.project}-${var.tool}-${var.stack}/*",
       "Effect":"Allow",
       "Principal": {
-          "AWS": "arn:aws:iam::${var.prod_acount_id}:root"
+          "AWS": "arn:aws:iam::${var.prod_account_id}:root"
       },
       "Action": "s3:*",
       "Resource": "arn:aws:s3:::${var.project}-${var.tool}-${var.stack}/*"
