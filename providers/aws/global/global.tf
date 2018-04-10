@@ -2,11 +2,11 @@
 # See the LICENCE file at the top-level directory of this repo or at
 # https://github.com/microdc/terraform-stacks/blob/master/LICENSE
 #
-variable "account"           { }
-variable "domain"            { }
-variable "project"           { }
-variable "prod_account_id"   { }
-variable "nonprod_account_id"   { }
+variable "account"            { }
+variable "domain"             { }
+variable "project"            { }
+variable "prod_account_id"    { }
+variable "nonprod_account_id" { }
 
 provider "aws" {
 }
@@ -124,7 +124,7 @@ module "vpcpeering_state_bucket" {
 }
 
 resource "aws_s3_bucket" "kops_state_bucket" {
-  bucket = "${var.project}-${var.account}-${var.tool}-${var.stack}"
+  bucket = "${var.project}-${var.account}-kops-state"
   acl    = "private"
 
   versioning {
