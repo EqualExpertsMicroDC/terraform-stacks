@@ -124,7 +124,7 @@ module "vpcpeering_state_bucket" {
 }
 
 resource "aws_s3_bucket" "kops_state_bucket" {
-  bucket = "${var.project}-${var.account}-kops-state"
+  bucket = "${var.project}-${var.account}-kops"
   acl    = "private"
 
   versioning {
@@ -151,7 +151,7 @@ resource "aws_s3_bucket" "kops_state_bucket" {
   }
 
   tags {
-    Name    = "${var.project}-${var.account}-kops-state"
+    Name    = "${var.project}-${var.account}-kops"
     Project = "${var.project}"
   }
 }
