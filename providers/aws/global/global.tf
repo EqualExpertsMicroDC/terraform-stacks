@@ -123,13 +123,37 @@ module "vpcpeering_state_bucket" {
   prod_account_id = "${var.prod_account_id}"
 }
 
-module "kops_state_bucket" {
-  account        = "${var.account}"
-  source         = "../../../modules/aws/state_bucket"
-  project        = "${var.project}"
-  tool           = "${var.account}"
-  stack          = "kops"
-  prod_account_id = "0"
+resource "aws_s3_bucket" "kops_state_bucket" {
+  bucket = "${var.project}-${var.account}-${var.tool}-${var.stack}"
+  acl    = "private"
+
+  versioning {
+    enabled = true
+  }
+
+  lifecycle_rule {
+    prefix = "/"
+    enabled = true
+
+    noncurrent_version_transition {
+      days          = 30
+      storage_class = "STANDARD_IA"
+    }
+
+    noncurrent_version_transition {
+      days          = 60
+      storage_class = "GLACIER"
+    }
+
+    noncurrent_version_expiration {
+      days = 90
+    }
+  }
+
+  tags {
+    Name    = "${var.project}-${var.account}-${var.tool}-${var.stack}"
+    Project = "${var.project}"
+  }
 }
 
 output "prod_account_id" { value = "${var.prod_account_id}" }
