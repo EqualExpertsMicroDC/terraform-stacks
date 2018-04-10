@@ -96,7 +96,7 @@ module "global_state_bucket" {
   source         = "../../../modules/aws/state_bucket"
   project        = "${var.project}"
   stack          = "global"
-  prod_acount_id = "${var.prod_account_id}"
+  prod_account_id = "${var.prod_account_id}"
 }
 
 module "mgmt_state_bucket" {
@@ -104,7 +104,7 @@ module "mgmt_state_bucket" {
   source         = "../../../modules/aws/state_bucket"
   project        = "${var.project}"
   stack          = "mgmt"
-  prod_acount_id = "${var.prod_account_id}"
+  prod_account_id = "${var.prod_account_id}"
 }
 
 module "service_state_bucket" {
@@ -112,7 +112,7 @@ module "service_state_bucket" {
   source         = "../../../modules/aws/state_bucket"
   project        = "${var.project}"
   stack          = "service"
-  prod_acount_id = "${var.prod_account_id}"
+  prod_account_id = "${var.prod_account_id}"
 }
 
 module "vpcpeering_state_bucket" {
@@ -120,7 +120,7 @@ module "vpcpeering_state_bucket" {
   source         = "../../../modules/aws/state_bucket"
   project        = "${var.project}"
   stack          = "vpcpeering"
-  prod_acount_id = "${var.prod_account_id}"
+  prod_account_id = "${var.prod_account_id}"
 }
 
 module "kops_state_bucket" {
@@ -129,7 +129,7 @@ module "kops_state_bucket" {
   project        = "${var.project}"
   tool           = "${var.account}"
   stack          = "kops"
-  prod_acount_id = "0"
+  prod_account_id = "0"
 }
 
 output "prod_account_id" { value = "${var.prod_account_id}" }
