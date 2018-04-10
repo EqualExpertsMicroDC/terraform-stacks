@@ -11,7 +11,7 @@ variable "prod_acount_id" { }
 
 resource "aws_s3_bucket" "state_bucket" {
   bucket = "${var.project}-${var.tool}-${var.stack}"
-  count  = "${var.account == var.prod_acount_id ? 0 : 1}"
+  count  = "${var.account == "prod" ? 0 : 1}"
   acl    = "private"
   policy = <<EOF
 {
